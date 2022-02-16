@@ -1,0 +1,17 @@
+{% extends 'portfolio/navbar.html' %}
+{% block content %}
+
+<h1>Fazii's Blog</h1>
+<h2>Fazi has {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+<hr>
+
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+<h4>{{ blog.date|date:'M d Y'|upper }}</h4>
+<p>{{ blog.description|safe|truncatechars:100  }}</p>
+<hr>
+
+{% endfor %}
+
+{% endblock %}

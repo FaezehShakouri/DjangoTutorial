@@ -1,0 +1,28 @@
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+</style>
+
+<h2>You loged in as {{ data.user }}</h2>
+<hr>
+
+<h1>Your Favorites</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>weight</th>
+    </tr>
+
+    {% for item in data.queryset %}
+    <tr>
+        <td>{{ item.word }}</td>
+        <td>{{ item.weight }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<a href="{% url 'addFavorite' data.user.id %}">Add Favorite</a>
